@@ -1,0 +1,26 @@
+PODS:
+  - Masonry (1.0.2)
+  - SDWebImage (4.3.3):
+    - SDWebImage/Core (= 4.3.3)
+  - SDWebImage/Core (4.3.3)
+  - ZJJCarouselView (0.0.1):
+    - SDWebImage (~> 4.3.3)
+
+DEPENDENCIES:
+  - Masonry (~> 1.0.2)
+  - ZJJCarouselView
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Masonry
+    - SDWebImage
+    - ZJJCarouselView
+
+SPEC CHECKSUMS:
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  ZJJCarouselView: 7daba1e85d1b35fc879bb4b974ec1e38b6a1aa94
+
+PODFILE CHECKSUM: 06fab895a9e13a40151b543dcef5f5787d70a890
+
+COCOAPODS: 1.5.3
