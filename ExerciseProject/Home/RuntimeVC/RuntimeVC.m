@@ -28,7 +28,7 @@ static NSString *CellName = @"TableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Runtime学习";
-    dataArray = @[@"获取Class对象",@"反射机制",@"获取属性列表",@"获取方法列表",@"获取成员变量列表",@"添加方法",@"交换方法(我是美女)"];
+    dataArray = @[@"获取SEL",@"获取Class对象",@"反射机制",@"获取属性列表",@"获取方法列表",@"获取成员变量列表",@"添加方法",@"交换方法(我是美女)"];
     [self.view addSubview:self.tableView];
     [_tableView reloadData];
 }
@@ -165,6 +165,25 @@ static NSString *CellName = @"TableViewCell";
     NSLog(@"你是傻逼");
 }
 
+- (void)getSel {
+//SEL又叫选择器，是表示一个方法的selector的指针，其定义如下：
+   // typedef struct objc_selector *SEL;
+/*
+ 不同的类可以拥有相同的selector，这个没有问题。不同类的实例对象执行相同的selector时，会在各自的方法列表中去根据selector去寻找自己对应的IMP。
+
+ 工程中的所有的SEL组成一个Set集合，Set的特点就是唯一，因此SEL是唯一的。因此，如果我们想到这个方法集合中查找某个方法时，只需要去找到这个方法对应的SEL就行了，SEL实际上就是根据方法名hash化了的一个字符串，而对于字符串的比较仅仅需要比较他们的地址就可以了  本质上，SEL只是一个指向方法的指针
+ */
+   SEL sel = sel_registerName("iAmBeautiful");
+    SuppressPerformSelectorLeakWarning( [self performSelector:sel];);
+
+    SEL sel1 = @selector(iAmFool);
+     SuppressPerformSelectorLeakWarning( [self performSelector:sel1];);
+
+    SEL sel2 = NSSelectorFromString(@"iAmBeautiful");
+     SuppressPerformSelectorLeakWarning( [self performSelector:sel2];);
+
+}
+
 - (UITableView *)tableView {
     if(!_tableView){
         _tableView = [[UITableView alloc]initWithFrame:CGRectZero style:UITableViewStylePlain];
@@ -190,24 +209,27 @@ static NSString *CellName = @"TableViewCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0:
-            [self getClass];
+            [self getSel];
             break;
         case 1:
-            [self reflex];
+            [self getClass];
             break;
         case 2:
-            [self getProperties];
+            [self reflex];
             break;
         case 3:
-            [self getMethodList];
+            [self getProperties];
             break;
         case 4:
-            [self getIvarList];
+            [self getMethodList];
             break;
         case 5:
+            [self getIvarList];
+            break;
+        case 6:
             [self addMethod:@"qutamade"];
             break;
-            case 6:
+        case 7:
             [self iAmBeautiful];
             break;
 
