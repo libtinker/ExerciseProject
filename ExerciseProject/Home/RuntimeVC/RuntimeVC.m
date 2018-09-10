@@ -28,7 +28,7 @@ static NSString *CellName = @"TableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Runtime学习";
-    dataArray = @[@"获取SEL",@"获取Class对象",@"反射机制",@"获取属性列表",@"获取方法列表",@"获取成员变量列表",@"添加方法",@"交换方法(我是美女)"];
+    dataArray = @[@"获取SEL",@"获取Class对象",@"反射机制",@"获取属性列表",@"获取方法列表",@"获取成员变量列表",@"添加方法",@"交换方法(我是美女)",@"Method"];
     [self.view addSubview:self.tableView];
     [_tableView reloadData];
 }
@@ -183,6 +183,21 @@ static NSString *CellName = @"TableViewCell";
      SuppressPerformSelectorLeakWarning( [self performSelector:sel2];);
 
 }
+- (void)methodTest {
+    
+    /*
+     struct objc_method
+     {
+     SEL method_name;
+     char * method_types;
+     IMP method_imp;
+     };
+     typedef objc_method Method;
+     */
+    
+//    Method originMethod = class_getInstanceMethod([self class], @selector(viewDidLoad));
+    
+}
 
 - (UITableView *)tableView {
     if(!_tableView){
@@ -231,6 +246,9 @@ static NSString *CellName = @"TableViewCell";
             break;
         case 7:
             [self iAmBeautiful];
+            break;
+        case 8:
+            [self methodTest];
             break;
 
         default:
