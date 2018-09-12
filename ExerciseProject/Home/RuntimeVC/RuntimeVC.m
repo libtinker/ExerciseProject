@@ -15,15 +15,17 @@
 {
     NSArray *dataArray;
 }
-@property (nonatomic,strong) UITableView *tableView;
 
+@property (nonatomic,strong,) UITableView *tableView;
 @end
 @implementation RuntimeVC
 static NSString *CellName = @"TableViewCell";
 
 + (void)load {
-    [self.class zjj_swapOriginSel:@selector(iAmBeautiful) currentSel:@selector(iAmFool)];
+   
+   [self.class zjj_swapOriginSel:@selector(iAmBeautiful) currentSel:@selector(iAmFool)];
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -261,6 +263,9 @@ static NSString *CellName = @"TableViewCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 
 /*

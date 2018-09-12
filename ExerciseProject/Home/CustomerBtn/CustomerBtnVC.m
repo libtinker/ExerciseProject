@@ -8,9 +8,11 @@
 
 #import "CustomerBtnVC.h"
 #import "CustomerBtn.h"
+#import "TestView.h"
 
 @interface CustomerBtnVC ()
 @property (nonatomic,strong) CustomerBtn *btn;
+@property (nonatomic,strong) TestView *testView;
 
 @end
 
@@ -20,6 +22,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view addSubview:self.btn];
+    [self.view addSubview:self.testView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(aviewAction)];
+    [self.view addGestureRecognizer:tap];
+
+}
+- (void)aviewAction {
+    NSLog(@"单击");
 }
 - (UIButton *)btn {
     if (!_btn) {
@@ -32,6 +41,13 @@
     }
     return _btn;
 }
+- (TestView *)testView {
+    if (!_testView) {
+        _testView = [[TestView alloc] initWithFrame:CGRectMake(0, 300, 300, 300)];
+        _testView.backgroundColor = [UIColor redColor];
+    }
+    return _testView;
+}
 
 - (void)btnClicked:(UIButton *)button {
     NSLog(@"扩大点击区域");
@@ -43,6 +59,20 @@
          button.userInteractionEnabled = YES;
     });
 
+
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"%@ touch begin", self.class);
+    UIResponder *next = [self nextResponder];
+    while (next) {
+        NSLog(@"%@",next.class);
+        next = [next nextResponder];
+    }
+}
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    NSLog(@"%@ touch end", self.class);
 }
 
 

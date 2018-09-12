@@ -25,7 +25,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
++ (void)load {
+    NSLog(@"我是clas父类的load方法");
 
+}
++ (void)initialize {
+    NSLog(@"父类的==%@ initialize",self.class);
+}
 /*
 #pragma mark - Navigation
 

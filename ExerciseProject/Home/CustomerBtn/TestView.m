@@ -1,29 +1,15 @@
 //
-//  CustomerBtn.m
+//  TestView.m
 //  ExerciseProject
 //
-//  Created by 天空吸引我 on 2018/9/5.
+//  Created by 天空吸引我 on 2018/9/10.
 //  Copyright © 2018年 天空吸引我. All rights reserved.
 //
 
-#import "CustomerBtn.h"
+#import "TestView.h"
 
-@implementation CustomerBtn
-/*
- 对CGRectInset的解释
- CGRectInset(CGRect rect, CGFloat dx, CGFloat dy)作用是将rect坐标按照(dx,dy)进行平移，对size进行如下变换
- 新宽度 = 原宽度 - 2*dx；新高度 = 原高度 - 2*dy
- 即dx,dy为正，则为缩小点击范围；dx,dy为负的话，则为扩大范围
- */
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
-    //当前btn大小
-    CGRect btnBounds = self.bounds;
-    //扩大点击区域，想缩小就将-10设为正值
-    btnBounds = CGRectInset(btnBounds, -100, -100);
+@implementation TestView
 
-    //若点击的点在新的bounds里，就返回YES
-    return CGRectContainsPoint(btnBounds, point);
-}
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     if (!self.isUserInteractionEnabled || self.isHidden || self.alpha <= 0.01) return nil;
     //判断点在不在这个视图里
@@ -45,6 +31,16 @@
     }
     //不在这个视图直接返回nil
     return nil;
+}
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    BOOL success = CGRectContainsPoint(self.bounds, point);
+    if (success) {
+        NSLog(@"点在%@里",self.class);
+    }else {
+        NSLog(@"点不在%@里",self.class);
+    }
+    return success;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

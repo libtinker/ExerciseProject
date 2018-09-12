@@ -21,6 +21,11 @@ static NSString *CellName = @"HomeCell";
 
 @implementation HomeVC
 
+
++ (void)initialize {
+    NSLog(@"子类的initialize");
+}
+
 #pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,6 +33,10 @@ static NSString *CellName = @"HomeCell";
     [self.view addSubview:self.tableView];
 }
 - (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"homeVC_viewWillAppear");
+}
+- (void)viewDidAppear:(BOOL)animated {
+    NSLog(@"homeVC_viewDidAppear");
 
 }
 - (void)didReceiveMemoryWarning {
