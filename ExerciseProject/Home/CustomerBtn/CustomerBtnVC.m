@@ -9,7 +9,7 @@
 #import "CustomerBtnVC.h"
 #import "CustomerBtn.h"
 #import "TestView.h"
-
+#import "UIButton+Clicked.h"
 @interface CustomerBtnVC ()
 @property (nonatomic,strong) CustomerBtn *btn;
 @property (nonatomic,strong) TestView *testView;
@@ -23,8 +23,8 @@
     // Do any additional setup after loading the view.
     [self.view addSubview:self.btn];
     [self.view addSubview:self.testView];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(aviewAction)];
-    [self.view addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(aviewAction)];
+//    [self.view addGestureRecognizer:tap];
 
 }
 - (void)aviewAction {
@@ -32,11 +32,12 @@
 }
 - (UIButton *)btn {
     if (!_btn) {
-        _btn = [CustomerBtn buttonWithType:UIButtonTypeCustom];
+        _btn = [[CustomerBtn alloc] init];
         _btn.backgroundColor = [UIColor blueColor];
         _btn.frame = CGRectMake(0, 100, 100, 50);
         [_btn setTitle:@"自定义btn" forState:UIControlStateNormal];
         [_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _btn.timeInterval = 2;
         [_btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _btn;
@@ -52,28 +53,21 @@
 - (void)btnClicked:(UIButton *)button {
     NSLog(@"扩大点击区域");
     NSLog(@"%@",NSStringFromCGRect(button.frame));
-    button.userInteractionEnabled = NO;
-    dispatch_time_t  time = dispatch_time(DISPATCH_TIME_NOW, 1ull * NSEC_PER_SEC);
-    dispatch_after(time, dispatch_get_main_queue(), ^{
-        // NSLog(@"time时间后执行的代码");
-         button.userInteractionEnabled = YES;
-    });
-
 
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    NSLog(@"%@ touch begin", self.class);
-    UIResponder *next = [self nextResponder];
-    while (next) {
-        NSLog(@"%@",next.class);
-        next = [next nextResponder];
-    }
-}
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    
-    NSLog(@"%@ touch end", self.class);
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    NSLog(@"%@ touch begin", self.class);
+//    UIResponder *next = [self nextResponder];
+//    while (next) {
+//        NSLog(@"%@",next.class);
+//        next = [next nextResponder];
+//    }
+//}
+//- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//
+//    NSLog(@"%@ touch end", self.class);
+//}
 
 
 - (void)didReceiveMemoryWarning {

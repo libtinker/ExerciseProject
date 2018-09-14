@@ -35,11 +35,11 @@
 
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
     BOOL success = CGRectContainsPoint(self.bounds, point);
-    if (success) {
-        NSLog(@"点在%@里",self.class);
-    }else {
-        NSLog(@"点不在%@里",self.class);
-    }
+//    if (success) {
+//        NSLog(@"点在%@里",self.class);
+//    }else {
+//        NSLog(@"点不在%@里",self.class);
+//    }
     return success;
 }
 /*

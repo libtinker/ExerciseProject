@@ -11,5 +11,6 @@
 @interface CustomerBtn : UIButton
 
 @property (copy) NSMutableArray *array;
-
+@property (nonatomic,assign) NSTimeInterval timeInterval;
+@property (nonatomic,assign) BOOL clickedFinish;
 @end
