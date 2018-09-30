@@ -9,7 +9,6 @@
 #import "CustomerBtnVC.h"
 #import "CustomerBtn.h"
 #import "TestView.h"
-#import "UIButton+Clicked.h"
 @interface CustomerBtnVC ()
 @property (nonatomic,strong) CustomerBtn *btn;
 @property (nonatomic,strong) TestView *testView;
@@ -21,16 +20,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.view addSubview:self.btn];
+
     [self.view addSubview:self.testView];
+      [self.testView addSubview:self.btn];
+   int b = self.btn ->a;//访问成员变量，b位于栈区
+
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(aviewAction)];
 //    [self.view addGestureRecognizer:tap];
 
 }
+
 - (void)aviewAction {
     NSLog(@"单击");
 }
-- (UIButton *)btn {
+
+- (CustomerBtn *)btn {
     if (!_btn) {
         _btn = [[CustomerBtn alloc] init];
         _btn.backgroundColor = [UIColor blueColor];

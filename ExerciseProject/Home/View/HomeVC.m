@@ -29,6 +29,7 @@ static NSString *CellName = @"HomeCell";
 #pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     _dataArray = [self.homeViewModel getDataArray];
     [self.view addSubview:self.tableView];
 }
@@ -38,6 +39,9 @@ static NSString *CellName = @"HomeCell";
 - (void)viewDidAppear:(BOOL)animated {
     NSLog(@"homeVC_viewDidAppear");
 
+}
+- (void)viewDidDisappear:(BOOL)animated {
+ NSLog(@"homeVC_viewDidDisappear");
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

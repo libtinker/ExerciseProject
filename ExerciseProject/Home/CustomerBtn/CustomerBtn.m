@@ -9,6 +9,12 @@
 #import "CustomerBtn.h"
 
 @implementation CustomerBtn
+- (instancetype)init {
+    if (self = [super init]) {
+        a = 3;
+    }
+    return self;
+}
 /*
  对CGRectInset的解释
  CGRectInset(CGRect rect, CGFloat dx, CGFloat dy)作用是将rect坐标按照(dx,dy)进行平移，对size进行如下变换

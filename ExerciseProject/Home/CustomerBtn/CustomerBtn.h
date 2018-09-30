@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomerBtn : UIButton
-
+{
+    @public ;
+    int a;
+}
 @property (copy) NSMutableArray *array;
 @property (nonatomic,assign) NSTimeInterval timeInterval;
 @property (nonatomic,assign) BOOL clickedFinish;

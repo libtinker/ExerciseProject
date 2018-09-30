@@ -11,6 +11,7 @@
 #import "BaseNavigationController.h"
 #import "HomeVC.h"
 #import "MineVC.h"
+#import "FJFNavigationControllerManager.h"
 
 
 @interface BaseTabBarController ()
@@ -43,7 +44,8 @@
     textAttrs[NSFontAttributeName] = [UIFont systemFontOfSize:10];
     [childVc.tabBarItem setTitleTextAttributes:textSelectAttrs forState:UIControlStateSelected];
 
-    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:childVc];
+    UINavigationController *nav = [FJFNavigationControllerManager navigationControllerWithRootViewController:childVc];
+//    BaseNavigationController *nav = [[BaseNavigationController alloc] initWithRootViewController:childVc];
     [self addChildViewController:nav];
     childVc.tabBarItem.tag = tag;
 }
