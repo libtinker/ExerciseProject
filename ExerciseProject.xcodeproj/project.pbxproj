@@ -10,6 +10,8 @@
 		56A292DB21549ED90078B1C0 /* FJFNavigationControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A292D621549ED90078B1C0 /* FJFNavigationControllerManager.m */; };
 		56A292DC21549ED90078B1C0 /* FJFViewControllerConfigureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A292D821549ED90078B1C0 /* FJFViewControllerConfigureManager.m */; };
 		56A292DD21549ED90078B1C0 /* UINavigationController+HasCalledTheMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A292DA21549ED90078B1C0 /* UINavigationController+HasCalledTheMethod.m */; };
+		56A293072160A3630078B1C0 /* ClientSocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A293062160A3630078B1C0 /* ClientSocketVC.m */; };
+		56A2930A2160B08B0078B1C0 /* ServerSocketVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A293092160B08B0078B1C0 /* ServerSocketVC.m */; };
 		56CEAAE42130F86A00F60554 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CEAAE32130F86A00F60554 /* AppDelegate.m */; };
 		56CEAAEC2130F86B00F60554 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56CEAAEB2130F86B00F60554 /* Assets.xcassets */; };
 		56CEAAF22130F86B00F60554 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 56CEAAF12130F86B00F60554 /* main.m */; };
@@ -45,6 +47,10 @@
 		56A292D821549ED90078B1C0 /* FJFViewControllerConfigureManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJFViewControllerConfigureManager.m; sourceTree = "<group>"; };
 		56A292D921549ED90078B1C0 /* UINavigationController+HasCalledTheMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+HasCalledTheMethod.h"; sourceTree = "<group>"; };
 		56A292DA21549ED90078B1C0 /* UINavigationController+HasCalledTheMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+HasCalledTheMethod.m"; sourceTree = "<group>"; };
+		56A293052160A3630078B1C0 /* ClientSocketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientSocketVC.h; sourceTree = "<group>"; };
+		56A293062160A3630078B1C0 /* ClientSocketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientSocketVC.m; sourceTree = "<group>"; };
+		56A293082160B08B0078B1C0 /* ServerSocketVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerSocketVC.h; sourceTree = "<group>"; };
+		56A293092160B08B0078B1C0 /* ServerSocketVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServerSocketVC.m; sourceTree = "<group>"; };
 		56CEAADF2130F86A00F60554 /* ExerciseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExerciseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56CEAAE22130F86A00F60554 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		56CEAAE32130F86A00F60554 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -133,6 +139,24 @@
 			path = FJFNavigationBarManager;
 			sourceTree = "<group>";
 		};
+		56A293032160A2070078B1C0 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		56A293042160A2110078B1C0 /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				56A293052160A3630078B1C0 /* ClientSocketVC.h */,
+				56A293062160A3630078B1C0 /* ClientSocketVC.m */,
+				56A293082160B08B0078B1C0 /* ServerSocketVC.h */,
+				56A293092160B08B0078B1C0 /* ServerSocketVC.m */,
+			);
+			path = Socket;
+			sourceTree = "<group>";
+		};
 		56CEAAD62130F86A00F60554 = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +239,8 @@
 		56CEAB0F2131127500F60554 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				56A293042160A2110078B1C0 /* Socket */,
+				56A293032160A2070078B1C0 /* New Group */,
 				56F1642D2147BD0300BC147D /* LifeCycleVC */,
 				56F1642321424AE000BC147D /* RuntimeVC */,
 				56F1641B2140FC6400BC147D /* Delegate */,
@@ -499,6 +525,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56A293072160A3630078B1C0 /* ClientSocketVC.m in Sources */,
 				56F164082139193600BC147D /* SetVC.m in Sources */,
 				56F1642621424B0E00BC147D /* RuntimeVC.m in Sources */,
 				56F16417213FDB3800BC147D /* CopyVC.m in Sources */,
@@ -522,6 +549,7 @@
 				56F163E42131336B00BC147D /* HomeModel.m in Sources */,
 				56CEAB2021311DB100F60554 /* KVOVC.m in Sources */,
 				56F1640C213D2DC600BC147D /* RunLoopVC.m in Sources */,
+				56A2930A2160B08B0078B1C0 /* ServerSocketVC.m in Sources */,
 				56CEAB032130FCAC00F60554 /* StartPageVC.m in Sources */,
 				56F16413213FAFDB00BC147D /* CustomerBtn.m in Sources */,
 				56F16410213FADFE00BC147D /* CustomerBtnVC.m in Sources */,
