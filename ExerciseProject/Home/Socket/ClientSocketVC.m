@@ -7,119 +7,116 @@
 //
 
 #import "ClientSocketVC.h"
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import <arpa/inet.h>
+#import <unistd.h>
+#import <netinet/tcp.h>
 
 @interface ClientSocketVC ()<NSStreamDelegate>
 {
-    NSInputStream *_inputStream;//输入流
-    NSOutputStream *_outSttream;//输出流
+    CFSocketRef _socket;
 }
 @end
 
+static ClientSocketVC *selfClass = nil;//在c函数里可使用其调自身方法或属性
 @implementation ClientSocketVC
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self connectToHost];
-}
 
-- (void)connectToHost {
-
-    NSString *host = @"127.0.0.1";
-    int port = 2345;
-
-    //定义C语言输入输出流
-    CFReadStreamRef readStream;
-    CFWriteStreamRef writeStream;
-    CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)host, port, &readStream, &writeStream);
-
-    //把C语言的输入输出流转化成OC对象
-    _inputStream = (__bridge NSInputStream *)(readStream);
-    _outSttream = (__bridge NSOutputStream *)(writeStream);
-
-    _inputStream.delegate = self;
-    _outSttream.delegate = self;
-
-      //把输入输入流添加到主运行循环
-    [_inputStream scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-    [_outSttream scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-
-    [_inputStream open];
-    [_outSttream open];
+    selfClass = self;
+    [self creatConnect];
 
 }
 
-//Stream的代理方法
-- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode {
+/**
+ 创建连接
+ */
 
-    NSLog(@"%@",[NSThread currentThread]);
+- (void)creatConnect {
 
-    //NSStreamEventOpenCompleted = 1UL << 0,//输入输出流打开完成//NSStreamEventHasBytesAvailable = 1UL << 1,//有字节可读//NSStreamEventHasSpaceAvailable = 1UL << 2,//可以发放字节//NSStreamEventErrorOccurred = 1UL << 3,//连接出现错误//NSStreamEventEndEncountered = 1UL << 4//连接结束
+    CFSocketContext sockContext = {0,NULL, NULL,NULL,NULL};
+    _socket = CFSocketCreate(kCFAllocatorDefault,//为对象分配内存 可为nil,
+                             PF_INET,//协议族，0或负数 默认为 PF_INET,
+                             SOCK_STREAM,//套接字类型，协议族为PF_INET 默认,
+                             IPPROTO_TCP,//套接字协议,
+                             kCFSocketConnectCallBack,//触发回调消息类型,
+                             TCPServerConnectCallBack ,//回调函数,
+                              &sockContext//一个持有CFSocket结构信息的对象，可以为nil
+                             );
 
-   switch(eventCode) {
-                 case NSStreamEventOpenCompleted:
-                 NSLog(@"输入输出流打开完成");
-                break;
+    if (_socket != nil) {
+        //配置服务器地址
+         struct sockaddr_in addr4; //IPV4
+        memset(&addr4, 0, sizeof(addr4));
+        addr4.sin_len=sizeof(addr4);
+        addr4.sin_family=AF_INET;//协议族
+        addr4.sin_port=htons(8888);//端口号
+        addr4.sin_addr.s_addr=inet_addr([@"172.30.14.63" UTF8String]); // 把字符串的地址转换为机器可识别的网络地址
 
-                case NSStreamEventHasBytesAvailable:
-                 NSLog(@"有字节可读");
-                 [self readData];
-                break;
+        CFDataRef address=CFDataCreate(kCFAllocatorDefault, (UInt8 *)&addr4 , sizeof(addr4));
+        //绑定socket
+        CFSocketConnectToAddress(_socket, address, -1);//连接超时时间，如果为负，则不尝试连接，而是把连接放在后台进行，如果_socket消息类型为kCFSocketConnectCallBack，将会在连接成功或失败的时候在后台触发回调函数
 
-                 case  NSStreamEventHasSpaceAvailable:
-                 NSLog(@"可以发送字节");
-                 break;
+        CFRunLoopRef cRunRef = CFRunLoopGetCurrent();
+        CFRunLoopSourceRef sourceRef=CFSocketCreateRunLoopSource(kCFAllocatorDefault, _socket, 0);
+        CFRunLoopAddSource(cRunRef, sourceRef, kCFRunLoopCommonModes);
+        CFRelease(sourceRef);
+    }
 
-                 case NSStreamEventErrorOccurred:
-                 NSLog(@"连接出现错误");
-                 break;
-
-                 case NSStreamEventEndEncountered:
-                 NSLog(@"连接结束");
-                 //关闭输入输出流
-                 [_inputStream close];
-                 [_outSttream close];
-
-                 //从主运行循环移除
-                 [_inputStream removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-                 [_outSttream removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
-                 break;
-
-                 default:
-
-                 break;
-         }
 }
 
-- (void)readData {
+static void TCPServerConnectCallBack(CFSocketRef s,CFSocketCallBackType type,CFDataRef address,const void *data,void *info) {
 
-     //建立一个缓冲区 可以放1024个字节
-    uint8_t buf[1024];
+    NSLog(@"%@",info);
 
-    //返回实际装的字节数
-    NSInteger len = [_inputStream read:buf maxLength:sizeof(buf)];
+    if (data!=NULL && type ==kCFSocketConnectCallBack) {
+        NSLog(@"连接失败");
+        return;
+    }
 
-    //把字节数组转化成字符串
-    NSData *data = [NSData dataWithBytes:buf length:len];
-    NSString *recStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-     NSLog(@"%@",recStr);
+    //使用异步线程监听有没有收到数据
+    [NSThread detachNewThreadSelector:@selector(readMessage) toTarget:selfClass withObject:nil];
 }
 
-//发送数据
-- (void)sendData {
+- (void)readMessage {
 
-    NSString *text = @"我要发送数据";
-    NSData *data = [text dataUsingEncoding:NSUTF8StringEncoding];
-    [_outSttream write:data.bytes maxLength:data.length];
-}
-/*
-#pragma mark - Navigation
+    //监听收到的数据
+    char buf[2048];
+    NSString *logStr;
+    do {
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+        // 接收数据
+        ssize_t recvLen = recv(CFSocketGetNative(_socket), buf,
+                               sizeof(buf), 0);
+
+        if (recvLen > 0) {
+
+            logStr = [NSString stringWithFormat:@"%@\n", [NSString stringWithFormat:@"%s", buf]];
+
+            // 回到主线程刷新UI
+            [self performSelectorOnMainThread:@selector(showMessage:) withObject:logStr waitUntilDone:YES];
+        }
+
+    } while (strcmp(buf,"exit") != 0);
+
 }
-*/
+
+- (void)sendMessage {
+
+    NSString*stringTosend = @"发送数据";
+    const char *data = [stringTosend UTF8String];
+
+    send(CFSocketGetNative(_socket), data,strlen(data) + 1,0);
+}
+
+- (void)showMessage:(NSString *)message {
+
+    NSLog(@"%@",message);
+
+}
 
 @end

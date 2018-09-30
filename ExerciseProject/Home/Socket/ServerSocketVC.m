@@ -7,96 +7,199 @@
 //
 
 #import "ServerSocketVC.h"
-#include <sys/socket.h>
-#include <netinet/in.h>
+#import <sys/socket.h>
+#import <netinet/in.h>
+#import <arpa/inet.h>
+#import <unistd.h>
+#import <netinet/tcp.h>
 
 @interface ServerSocketVC ()
 {
-    //服务端的标志
-    int server_flag;
-
-    //客户端的标志
-    int client_flag;
-
-    //具体的计算机
-    struct sockaddr_in address;
+    CFSocketRef _socket;
+    NSMutableArray *addressArr;
 }
 @end
+
+static CFWriteStreamRef outputStream;
+static ServerSocketVC *selfClass = nil;
 
 @implementation ServerSocketVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    selfClass = self;
+    outputStream = NULL;
+        if ([self creatConnect]) {
 
+            CFRunLoopRun();
+        }
     // Do any additional setup after loading the view.
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (BOOL) creatConnect{
 
-    //-----服务端，最基本的功能就这7步。
-
-    //1.创建服务端得标识符int。
-    server_flag = socket(AF_INET, SOCK_STREAM, 0);
-    //第一个参数属于网络类型，ipv4和ipv6,第二个参数为选择协议(流媒体)
-
-
-    //2.将服务端的标识符绑定到具体的计算机(ip,port)里面。那么，这个计算机就成为了服务器了。
-    //生成一个具体的计算机
-    address.sin_port = htons(2345);
-    address.sin_family = AF_INET;
-    address.sin_addr.s_addr = INADDR_ANY;//指的是本机
-
-    //用来判断是否绑定成功
-    int error = -1;
+    _socket=CFSocketCreate(kCFAllocatorDefault,
+                               PF_INET, SOCK_STREAM,
+                               IPPROTO_TCP, kCFSocketAcceptCallBack,
+                               TCPServerAcceptCallBack,
+                               NULL);
 
 
-    //绑定
-    error = bind(server_flag, (struct sockaddr *)&address, sizeof(address));
-
-
-    //3.服务端要做好能同时处理多少个链接的事情。
-    error = listen(server_flag, 100);
-    //第一个参数是判定是哪一个服务端，第二个参数代表多少个
-
-
-    //4.服务端要做好等待的准备，等待客户端连接请求的准备。
-    while (1) {
-        //5.接到一个请求，将收到的客户端链接请求生成一个标志位，作为某一个客户端的标志。
-        client_flag = accept(server_flag, NULL, NULL);
-
-        //指定了有多少个就有多少个大小的数组在服务端存着的。
-        //6.通过客户端的标志位，进行消息传输。
-        //--6.1 接收数据...
-        //声明缓存位置，把接收到得数据存在哪
-        char buffer[1024];
-
-        int length = recv(client_flag, buffer, (long)1024, -1);
-
-
-        buffer[length] = '\0';
-
-        printf("client flag : %s",buffer);
-
-        //--6.2 发送消息...
-        send(client_flag, "who are you?\n", 50, -1);
-
-        //所以，从第7步来讲的话，http协议的底层实际上也是用Socket的实现的。因为http是短连接，也就是请求一次，获取一次。这里有取消链接的话，就是每次请求就断开。
-        //7.若客户端 取消链接，那么服务端需要关闭该客户端的标志位。
-        close(client_flag);
+    if (_socket==NULL) {
+        NSLog(@"cannot creat socket");
+        return 0;
     }
 
-    //之后，比如服务端和客户端通信，客户端和客户端通信，这样的功能属于逻辑方面的考虑。属于高层次的编码。
+    int optval=1;
+    setsockopt(CFSocketGetNative(_socket),
+                   SOL_SOCKET, SO_REUSEADDR, (void *)&optval,
+                   sizeof(optval));
+
+    struct sockaddr_in addr4;
+    memset(&addr4,0, sizeof(addr4));
+    addr4.sin_len=sizeof(addr4);
+    addr4.sin_family=PF_INET;
+    addr4.sin_port=htons(8888);
+    addr4.sin_addr.s_addr=htonl(INADDR_ANY);
+
+    CFDataRef address=CFDataCreate(kCFAllocatorDefault, (UInt8*)&addr4,
+                                       sizeof(addr4));
+
+
+    if (CFSocketSetAddress(_socket, address) !=kCFSocketSuccess) {
+        NSLog(@"Bind to address failed!");
+        if (_socket) {
+            CFRelease(_socket);
+            _socket=NULL;
+        }
+        return 0;
+    }
+
+    CFRunLoopRef cRunLoop=CFRunLoopGetCurrent();
+    CFRunLoopSourceRef source=CFSocketCreateRunLoopSource(kCFAllocatorDefault,
+                                                              _socket,
+                                                              0);
+    CFRunLoopAddSource(cRunLoop, source,
+                           kCFRunLoopCommonModes);
+    CFRelease(source);
+    return 1;
 
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+static void TCPServerAcceptCallBack(CFSocketRef socket,CFSocketCallBackType
+                                    type,CFDataRef address,const
+                                    void *data,void *info){
+
+    if (kCFSocketAcceptCallBack == type) {
+
+        CFSocketNativeHandle nativeSocketHandle=*(CFSocketNativeHandle *)data;
+        uint8_t name[SOCK_MAXADDRLEN];
+        socklen_t nameLen=sizeof(name);
+
+        if (getpeername(nativeSocketHandle, (struct sockaddr*)name, &nameLen)) {
+
+            NSLog(@"error");
+            exit(1);
+        }
+
+        NSLog(@"%s connected",inet_ntoa(((struct sockaddr_in*)name)->sin_addr));
+
+        CFReadStreamRef readStream;
+        CFWriteStreamRef writeStream;
+
+        CFStreamCreatePairWithSocket(kCFAllocatorDefault, nativeSocketHandle, &readStream, &writeStream);
+
+        if (readStream && writeStream) {
+
+            [selfClass->addressArr addObject:(__bridge  id _Nonnull)(writeStream)];
+
+            NSString *addre=[NSString stringWithUTF8String:inet_ntoa(((struct sockaddr_in*)name)->sin_addr)];
+
+            NSLog(@"%@",addre);
+
+            CFStreamClientContext streamContext={0,(__bridge void*)(addre),NULL,NULL};
+            if (!CFReadStreamSetClient(readStream,kCFStreamEventHasBytesAvailable,readStreamFunc, &streamContext)) {
+                exit(1);
+            }
+
+            if (!CFWriteStreamSetClient(writeStream,kCFStreamEventCanAcceptBytes,writeStreamFunc, &streamContext)) {
+
+                exit(1);
+            }
+
+            CFReadStreamScheduleWithRunLoop(readStream,CFRunLoopGetCurrent(),kCFRunLoopCommonModes);
+
+            CFWriteStreamScheduleWithRunLoop(writeStream,CFRunLoopGetCurrent(),kCFRunLoopCommonModes);
+            CFReadStreamOpen(readStream);
+            CFWriteStreamOpen(writeStream);
+
+        }else{
+            close(nativeSocketHandle);
+        }
+    }
 }
-*/
+
+/**
+  读取数据
+  */
+
+void readStreamFunc(CFReadStreamRef stream,
+                    CFStreamEventType type,
+                    void *clientCallBackInfo){
+
+    UInt8 buff[255];
+    CFReadStreamRead(stream, buff,
+                         255);
+
+    printf("received %s",buff);
+    NSString *str=[NSString
+                       stringWithCString:(char *)buff
+                       encoding:NSUTF8StringEncoding];
+
+    [selfClass showReciveData:str];
+}
+
+void writeStreamFunc(CFWriteStreamRef stream,
+                     CFStreamEventType type,
+                     void *clientCallBackInfo){
+
+}
+
+
+
+
+
+-(void)sendStream{
+
+
+//    int index=[self.clientTf.text
+//                   intValue];
+
+    NSString *ip = @"123";
+    UInt8 buff[1024];
+    NSString *sendText = @"我是服务端";
+
+    memcmp(buff, [sendText UTF8String], sizeof(buff));
+
+
+
+    //    给指定客户端发送消息
+    outputStream=(__bridge CFWriteStreamRef)(ip);
+
+    CFWriteStreamWrite(outputStream, (UInt8
+                                          *)sendText.UTF8String,
+                           strlen(sendText.UTF8String)+1
+                           + 1);
+}
+
+-(void)showReciveData:(NSString *)str{
+    NSLog(@"readStreamFunc ------------- %@",str);
+}
+- (IBAction)send:(id)sender {
+
+    [self sendStream];
+
+}
 
 @end
