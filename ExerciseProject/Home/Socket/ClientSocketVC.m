@@ -54,7 +54,7 @@ static ClientSocketVC *selfClass = nil;//在c函数里可使用其调自身方�
         memset(&addr4, 0, sizeof(addr4));
         addr4.sin_len=sizeof(addr4);
         addr4.sin_family=AF_INET;//协议族
-        addr4.sin_port=htons(8888);//端口号
+        addr4.sin_port=htons(1234);//端口号
         addr4.sin_addr.s_addr=inet_addr([@"172.30.14.63" UTF8String]); // 把字符串的地址转换为机器可识别的网络地址
 
         CFDataRef address=CFDataCreate(kCFAllocatorDefault, (UInt8 *)&addr4 , sizeof(addr4));
@@ -118,5 +118,7 @@ static void TCPServerConnectCallBack(CFSocketRef s,CFSocketCallBackType type,CFD
     NSLog(@"%@",message);
 
 }
-
+- (void) touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self sendMessage];
+}
 @end

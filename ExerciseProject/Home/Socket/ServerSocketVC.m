@@ -32,7 +32,7 @@ static ServerSocketVC *selfClass = nil;
     outputStream = NULL;
         if ([self creatConnect]) {
 
-            CFRunLoopRun();
+//            CFRunLoopRun();
         }
     // Do any additional setup after loading the view.
 }
