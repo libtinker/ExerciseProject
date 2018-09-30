@@ -32,6 +32,8 @@
 		56F164292146576500BC147D /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F164282146576400BC147D /* TestView.m */; };
 		56F164302147BD3800BC147D /* LifeCycleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F1642F2147BD3800BC147D /* LifeCycleVC.m */; };
 		56F164332147BDAC00BC147D /* LifeCycleVC+ZJJCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F164322147BDAC00BC147D /* LifeCycleVC+ZJJCategory.m */; };
+		681BFA20214BFEFF00E80BF0 /* CoreTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 681BFA1F214BFEFF00E80BF0 /* CoreTextVC.m */; };
+		681BFA23214BFFE500E80BF0 /* CTDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 681BFA22214BFFE500E80BF0 /* CTDisplayView.m */; };
 		D4E992B7A5601792F63B0CF5 /* libPods-ExerciseProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFDE7A7518D519391013308 /* libPods-ExerciseProject.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,10 @@
 		56F164312147BDAC00BC147D /* LifeCycleVC+ZJJCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LifeCycleVC+ZJJCategory.h"; sourceTree = "<group>"; };
 		56F164322147BDAC00BC147D /* LifeCycleVC+ZJJCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LifeCycleVC+ZJJCategory.m"; sourceTree = "<group>"; };
 		574B1EC8701B7530FCF0A6F7 /* Pods-ExerciseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExerciseProject/Pods-ExerciseProject.debug.xcconfig"; sourceTree = "<group>"; };
+		681BFA1E214BFEFF00E80BF0 /* CoreTextVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreTextVC.h; sourceTree = "<group>"; };
+		681BFA1F214BFEFF00E80BF0 /* CoreTextVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreTextVC.m; sourceTree = "<group>"; };
+		681BFA21214BFFE500E80BF0 /* CTDisplayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTDisplayView.h; sourceTree = "<group>"; };
+		681BFA22214BFFE500E80BF0 /* CTDisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTDisplayView.m; sourceTree = "<group>"; };
 		DAFDE7A7518D519391013308 /* libPods-ExerciseProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExerciseProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F748A2C6F9385B86B052919C /* Pods-ExerciseProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExerciseProject/Pods-ExerciseProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +198,7 @@
 		56CEAB0F2131127500F60554 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				681BFA1D214BFECB00E80BF0 /* CoreText */,
 				56F1642D2147BD0300BC147D /* LifeCycleVC */,
 				56F1642321424AE000BC147D /* RuntimeVC */,
 				56F1641B2140FC6400BC147D /* Delegate */,
@@ -386,6 +393,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		681BFA1D214BFECB00E80BF0 /* CoreText */ = {
+			isa = PBXGroup;
+			children = (
+				681BFA1E214BFEFF00E80BF0 /* CoreTextVC.h */,
+				681BFA1F214BFEFF00E80BF0 /* CoreTextVC.m */,
+				681BFA21214BFFE500E80BF0 /* CTDisplayView.h */,
+				681BFA22214BFFE500E80BF0 /* CTDisplayView.m */,
+			);
+			path = CoreText;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -489,10 +507,12 @@
 				56F164212140FD7600BC147D /* DelegateTestVC.m in Sources */,
 				56F1641E2140FC9D00BC147D /* DelegateVC.m in Sources */,
 				56F164302147BD3800BC147D /* LifeCycleVC.m in Sources */,
+				681BFA20214BFEFF00E80BF0 /* CoreTextVC.m in Sources */,
 				56F163E12131335700BC147D /* HomeViewModel.m in Sources */,
 				56CEAAE42130F86A00F60554 /* AppDelegate.m in Sources */,
 				56CEAB1C2131130C00F60554 /* MineVC.m in Sources */,
 				56CEAB242131250900F60554 /* BaseNavigationController.m in Sources */,
+				681BFA23214BFFE500E80BF0 /* CTDisplayView.m in Sources */,
 				56CEAB19213112FA00F60554 /* HomeVC.m in Sources */,
 				56F163E42131336B00BC147D /* HomeModel.m in Sources */,
 				56CEAB2021311DB100F60554 /* KVOVC.m in Sources */,

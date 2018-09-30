@@ -9,7 +9,6 @@
 #import "CustomerBtnVC.h"
 #import "CustomerBtn.h"
 #import "TestView.h"
-#import "UIButton+Clicked.h"
 @interface CustomerBtnVC ()
 @property (nonatomic,strong) CustomerBtn *btn;
 @property (nonatomic,strong) TestView *testView;
