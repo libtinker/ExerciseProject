@@ -19,12 +19,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.displayView];
-    [self.displayView layoutSubviews];
+    [self.displayView setNeedsDisplay];
 }
 
 - (CTDisplayView *)displayView {
     if (!_displayView) {
-        _displayView = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 88, self.view.frame.size.width, 400)];
+        _displayView = [[CTDisplayView alloc] initWithFrame:CGRectMake(0, 88, self.view.frame.size.width, self.view.frame.size.height-88)];
     }
     return _displayView;
 }

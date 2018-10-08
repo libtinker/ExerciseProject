@@ -28,16 +28,11 @@
     HomeModel *model7 = [[HomeModel alloc] initWithTitle:@"Delegate使用" vcName:@"DelegateVC"];
     HomeModel *model8 = [[HomeModel alloc] initWithTitle:@"RuntimeVC" vcName:@"RuntimeVC"];
     HomeModel *model9 = [[HomeModel alloc] initWithTitle:@"生命周期" vcName:@"LifeCycleVC"];
-<<<<<<< HEAD
-    HomeModel *model10 = [[HomeModel alloc] initWithTitle:@"coreText" vcName:@"CoreTextVC"];
-
-    return @[model1,model2,model3,model4,model5,model6,model7,model8,model9,model10];
-=======
     HomeModel *model10 = [[HomeModel alloc] initWithTitle:@"客户端socket" vcName:@"ClientSocketVC"];
     HomeModel *model11 = [[HomeModel alloc] initWithTitle:@"服务端socket" vcName:@"ServerSocketVC"];
+    HomeModel *model12 = [[HomeModel alloc] initWithTitle:@"CoreTextVC" vcName:@"CoreTextVC"];
 
 
-    return @[model1,model2,model3,model4,model5,model6,model7,model8,model9,model10,model11];
->>>>>>> 72edd71cf6bc9777b6267a43a67c42291e2a2f68
+    return @[model1,model2,model3,model4,model5,model6,model7,model8,model9,model10,model11,model12];
 }
 @end
