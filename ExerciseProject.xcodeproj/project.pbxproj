@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5668954C216DE3880005EF10 /* AutoCellHeightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5668954B216DE3880005EF10 /* AutoCellHeightVC.m */; };
+		5668954F216DE6290005EF10 /* AutoHeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5668954E216DE6290005EF10 /* AutoHeightCell.m */; };
+		56689551216DE7270005EF10 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 56689550216DE7270005EF10 /* content.json */; };
 		56A292DB21549ED90078B1C0 /* FJFNavigationControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A292D621549ED90078B1C0 /* FJFNavigationControllerManager.m */; };
 		56A292DC21549ED90078B1C0 /* FJFViewControllerConfigureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A292D821549ED90078B1C0 /* FJFViewControllerConfigureManager.m */; };
 		56A292DD21549ED90078B1C0 /* UINavigationController+HasCalledTheMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A292DA21549ED90078B1C0 /* UINavigationController+HasCalledTheMethod.m */; };
@@ -43,6 +46,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5668954A216DE3880005EF10 /* AutoCellHeightVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoCellHeightVC.h; sourceTree = "<group>"; };
+		5668954B216DE3880005EF10 /* AutoCellHeightVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoCellHeightVC.m; sourceTree = "<group>"; };
+		5668954D216DE6290005EF10 /* AutoHeightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoHeightCell.h; sourceTree = "<group>"; };
+		5668954E216DE6290005EF10 /* AutoHeightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoHeightCell.m; sourceTree = "<group>"; };
+		56689550216DE7270005EF10 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		56A292D521549ED90078B1C0 /* FJFNavigationControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJFNavigationControllerManager.h; sourceTree = "<group>"; };
 		56A292D621549ED90078B1C0 /* FJFNavigationControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJFNavigationControllerManager.m; sourceTree = "<group>"; };
 		56A292D721549ED90078B1C0 /* FJFViewControllerConfigureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJFViewControllerConfigureManager.h; sourceTree = "<group>"; };
@@ -130,6 +138,18 @@
 				DAFDE7A7518D519391013308 /* libPods-ExerciseProject.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56689549216DE31C0005EF10 /* AutoCellHeight */ = {
+			isa = PBXGroup;
+			children = (
+				56689550216DE7270005EF10 /* content.json */,
+				5668954A216DE3880005EF10 /* AutoCellHeightVC.h */,
+				5668954B216DE3880005EF10 /* AutoCellHeightVC.m */,
+				5668954D216DE6290005EF10 /* AutoHeightCell.h */,
+				5668954E216DE6290005EF10 /* AutoHeightCell.m */,
+			);
+			path = AutoCellHeight;
 			sourceTree = "<group>";
 		};
 		56A292D421549ED90078B1C0 /* FJFNavigationBarManager */ = {
@@ -245,9 +265,8 @@
 		56CEAB0F2131127500F60554 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-
+				56689549216DE31C0005EF10 /* AutoCellHeight */,
 				681BFA1D214BFECB00E80BF0 /* CoreText */,
-
 				56A293042160A2110078B1C0 /* Socket */,
 				56A293032160A2070078B1C0 /* New Group */,
 				56F1642D2147BD0300BC147D /* LifeCycleVC */,
@@ -514,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56CEAAEC2130F86B00F60554 /* Assets.xcassets in Resources */,
+				56689551216DE7270005EF10 /* content.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +577,7 @@
 				56F164292146576500BC147D /* TestView.m in Sources */,
 				56CEAAF22130F86B00F60554 /* main.m in Sources */,
 				56F1641A213FDBCA00BC147D /* CopyModel.m in Sources */,
+				5668954F216DE6290005EF10 /* AutoHeightCell.m in Sources */,
 				56F164212140FD7600BC147D /* DelegateTestVC.m in Sources */,
 				56A292DD21549ED90078B1C0 /* UINavigationController+HasCalledTheMethod.m in Sources */,
 				56F1641E2140FC9D00BC147D /* DelegateVC.m in Sources */,
@@ -569,6 +590,7 @@
 				681BFA23214BFFE500E80BF0 /* CTDisplayView.m in Sources */,
 				56CEAB19213112FA00F60554 /* HomeVC.m in Sources */,
 				56F163E42131336B00BC147D /* HomeModel.m in Sources */,
+				5668954C216DE3880005EF10 /* AutoCellHeightVC.m in Sources */,
 				56CEAB2021311DB100F60554 /* KVOVC.m in Sources */,
 				56F1640C213D2DC600BC147D /* RunLoopVC.m in Sources */,
 				56A2930A2160B08B0078B1C0 /* ServerSocketVC.m in Sources */,

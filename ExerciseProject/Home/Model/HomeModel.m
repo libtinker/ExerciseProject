@@ -31,8 +31,10 @@
     HomeModel *model10 = [[HomeModel alloc] initWithTitle:@"客户端socket" vcName:@"ClientSocketVC"];
     HomeModel *model11 = [[HomeModel alloc] initWithTitle:@"服务端socket" vcName:@"ServerSocketVC"];
     HomeModel *model12 = [[HomeModel alloc] initWithTitle:@"CoreTextVC" vcName:@"CoreTextVC"];
+    HomeModel *model13 = [[HomeModel alloc] initWithTitle:@"AutoCellHeightVC" vcName:@"AutoCellHeightVC"];
 
 
-    return @[model1,model2,model3,model4,model5,model6,model7,model8,model9,model10,model11,model12];
+
+    return @[model1,model2,model3,model4,model5,model6,model7,model8,model9,model10,model11,model12,model13];
 }
 @end
