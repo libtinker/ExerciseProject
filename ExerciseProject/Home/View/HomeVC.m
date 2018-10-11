@@ -85,7 +85,9 @@ static NSString *CellName = @"HomeCell";
     HomeModel *model = _dataArray[indexPath.row];
     NSString *vcName = model.vcName;
     Class vcClass = NSClassFromString(vcName);
-    [self.navigationController pushViewController:[[vcClass alloc] init] animated:YES];
+    UIViewController *ctrl = [[vcClass alloc] init];
+    ctrl.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:ctrl animated:YES];
 }
 
 /*

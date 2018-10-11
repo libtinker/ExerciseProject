@@ -7,5 +7,6 @@ project 'ExerciseProject.xcworkspace'
 target :ExerciseProject do
   pod 'Masonry',                '~> 1.0.2'
   pod 'ZJJCarouselView'
+  pod 'YTKKeyValueStore'
 
 end

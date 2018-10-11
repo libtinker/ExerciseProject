@@ -1,26 +1,36 @@
 PODS:
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - Masonry (1.0.2)
   - SDWebImage (4.3.3):
     - SDWebImage/Core (= 4.3.3)
   - SDWebImage/Core (4.3.3)
+  - YTKKeyValueStore (0.1.2):
+    - FMDB (~> 2.0)
   - ZJJCarouselView (0.0.1):
     - SDWebImage (~> 4.3.3)
 
 DEPENDENCIES:
   - Masonry (~> 1.0.2)
+  - YTKKeyValueStore
   - ZJJCarouselView
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - FMDB
     - Masonry
     - SDWebImage
+    - YTKKeyValueStore
     - ZJJCarouselView
 
 SPEC CHECKSUMS:
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   SDWebImage: de4d90b5bff3571eae7bd16202b1f43135409fa5
+  YTKKeyValueStore: 4d002941540dd5108fa23009b71e0f2f937f7a0f
   ZJJCarouselView: 7daba1e85d1b35fc879bb4b974ec1e38b6a1aa94
 
-PODFILE CHECKSUM: 06fab895a9e13a40151b543dcef5f5787d70a890
+PODFILE CHECKSUM: f0839444096436ac154281a538564a7f536e3405
 
 COCOAPODS: 1.5.3
