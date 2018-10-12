@@ -42,13 +42,13 @@ static NSString *CellName = @"AutoHeightCell";
 
 - (UITableView *)tableView {
     if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height-88) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
         [_tableView registerClass:[AutoHeightCell class] forCellReuseIdentifier:CellName];
-        _tableView.estimatedRowHeight = 40;//估算高度
+        _tableView.estimatedRowHeight = 55.5;//估算高度
         _tableView.rowHeight = UITableViewAutomaticDimension;
     }
     return _tableView;
@@ -63,9 +63,19 @@ static NSString *CellName = @"AutoHeightCell";
 
     AutoHeightCell *cell = [tableView dequeueReusableCellWithIdentifier:CellName forIndexPath:indexPath];
     NSDictionary *dict = _dataArray[indexPath.row];
-    [cell setTitle:dict[@"color"] contentText:dict[@"content"]];
+    [cell setTitle:dict[@"nickname"] contentText:dict[@"describe"] headimg:dict[@"headimg"] imageArray:dict[@"img"]];
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 400;
+}
+/*
+ "headimg" :"football",
+ "nickname" : "Wilamowitz",
+ "describe" : "更进一步地，实际工作中，我们更希望通过一个排版文件，来设置需要排版的文字的 ",
+ "img" : ["football","zjj_photo"],
+ */
 
 
 /*

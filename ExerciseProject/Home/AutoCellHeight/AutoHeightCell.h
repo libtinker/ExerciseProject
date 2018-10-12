@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AutoHeightCell : UITableViewCell
 
-- (void)setTitle:(NSString *)title contentText:(NSString *)contentText;
+- (void)setTitle:(NSString *)title contentText:(NSString *)contentText headimg:(NSString *)headimg imageArray:(NSArray *)imageArray;
 @end
 
 NS_ASSUME_NONNULL_END

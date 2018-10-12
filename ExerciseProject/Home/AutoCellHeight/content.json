@@ -1,34 +1,92 @@
 [
-  { "color" : "blue",
-    "content" : "更进一步地，实际工作中，我们更希望通过一个排版文件，来设置需要排版的文字的 ",
-    "size" : 16,
-    "type" : "txt"
+    {
+        "headimg" :"zjj_photo",
+        "nickname" : "天空吸引我",
+        "describe" : "世界上最稳定的关系，是没有关系",
+        "img" : ["football","zjj_photo"],
+    },
+  {
+      "headimg" :"zjj_photo",
+      "nickname" : "天空吸引我",
+      "describe" : "世界上最稳定的关系，是没有关系 ",
+      "img" : ["football","zjj_photo","zjj_photo","zjj_photo","zjj_photo","football","football","zjj_photo"],
   },
-  { "color" : "red",
-    "content" : "内容、颜色、字体",
-    "size" : 22,
-    "type" : "txt"
+  {
+      "headimg" :"football",
+      "nickname" : "Wilamowitz",
+      "describe" : "除了国旗侧过来应该让我支持的比利时队以外，我突然发现我仁的球员天选之子－托利索是法国人啊！我应该支持法国队的！那我就支持法国和比利时获胜吧😂 ",
+      "img" : ["football","zjj_photo"],
   },
-  { "color" : "black",
-    "content" : "大小等信息。\n",
-    "size" : 16,
-    "type" : "txt"
+  {
+      "headimg" :"football",
+      "nickname" : "Wilamowitz",
+      "describe" : "除了国旗侧过来应该让我支持的比利时队以外，我突然发现我仁的球员天选之子－托利索是法国人啊！我应该支持法国队的！那我就支持法国和比利时获胜吧😂 ",
+      "img" : ["football","zjj_photo"],
   },
-  { "color" : "default",
-    "content" : "我在开发猿题库应用时，自己定义了一个基于UBB的排版模版。但是实现该排版文件的解析器要花费大量的篇幅，考虑到这并不是本章的重点，所以我们以一个较简单的排版文件来讲解其思想。",
-    "type" : "txt"
+  {
+      "headimg" :"zjj_photo",
+      "nickname" : "天空吸引我",
+      "describe" : "世界上最稳定的关系，是没有关系",
+      "img" : ["football","zjj_photo"],
   },
-  { "color" : "default",
-    "content" : "这在这里尝试放一个参考链接：",
-    "type" : "txt"
+  {
+      "headimg" :"zjj_photo",
+      "nickname" : "天空吸引我",
+      "describe" : "世界上最稳定的关系，是没有关系 ",
+      "img" : ["football","zjj_photo"],
   },
-  { "color" : "blue",
-    "content" : "链接文字",
-    "url" : "http://blog.devtang.com",
-    "type" : "link"
+  {
+      "headimg" :"football",
+      "nickname" : "Wilamowitz",
+      "describe" : "除了国旗侧过来应该让我支持的比利时队以外，我突然发现我仁的球员天选之子－托利索是法国人啊！我应该支持法国队的！那我就支持法国和比利时获胜吧😂 ",
+      "img" : ["football","zjj_photo"],
   },
-  { "color" : "default",
-    "content" : "大家可以尝试点击一下",
-    "type" : "txt"
+  {
+      "headimg" :"football",
+      "nickname" : "Wilamowitz",
+      "describe" : "除了国旗侧过来应该让我支持的比利时队以外，我突然发现我仁的球员天选之子－托利索是法国人啊！我应该支持法国队的！那我就支持法国和比利时获胜吧😂 ",
+      "img" : ["football","zjj_photo"],
+  },
+  {
+      "headimg" :"zjj_photo",
+      "nickname" : "天空吸引我",
+      "describe" : "世界上最稳定的关系，是没有关系 ",
+      "img" : ["football","zjj_photo"],
+  },
+  {
+      "headimg" :"football",
+      "nickname" : "Wilamowitz",
+      "describe" : "除了国旗侧过来应该让我支持的比利时队以外，我突然发现我仁的球员天选之子－托利索是法国人啊！我应该支持法国队的！那我就支持法国和比利时获胜吧😂 ",
+      "img" : ["football","zjj_photo"],
+  },
+  {
+      "headimg" :"zjj_photo",
+      "nickname" : "天空吸引我",
+      "describe" : "世界上最稳定的关系，是没有关系 ",
+      "img" : ["football","zjj_photo"],
+  },
+  {
+      "headimg" :"football",
+      "nickname" : "Wilamowitz",
+      "describe" : "除了国旗侧过来应该让我支持的比利时队以外，我突然发现我仁的球员天选之子－托利索是法国人啊！我应该支持法国队的！那我就支持法国和比利时获胜吧😂 ",
+      "img" : ["football","zjj_photo"],
+  },
+  {
+      "headimg" :"zjj_photo",
+      "nickname" : "天空吸引我",
+      "describe" : "世界上最稳定的关系，是没有关系",
+      "img" : ["football","zjj_photo"],
+  },
+  {
+      "headimg" :"football",
+      "nickname" : "Wilamowitz",
+      "describe" : "除了国旗侧过来应该让我支持的比利时队以外，我突然发现我仁的球员天选之子－托利索是法国人啊！我应该支持法国队的！那我就支持法国和比利时获胜吧😂 ",
+      "img" : ["football","zjj_photo"],
+  },
+  {
+      "headimg" :"football",
+      "nickname" : "Wilamowitz",
+      "describe" : "除了国旗侧过来应该让我支持的比利时队以外，我突然发现我仁的球员天选之子－托利索是法国人啊！我应该支持法国队的！那我就支持法国和比利时获胜吧😂 ",
+      "img" : ["https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=317380452,1418867024&fm=26&gp=0.jpg","https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539342175693&di=cfa5d7c0e345832406d7bf59687868ad&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D4257460908%2C1522349288%26fm%3D214%26gp%3D0.jpg"],
   }
 ]
