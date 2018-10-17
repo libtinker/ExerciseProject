@@ -4,24 +4,40 @@
         "nickname" : "天空吸引我",
         "describe" : "世界上最稳定的关系，是没有关系",
         "img" : ["football","zjj_photo"],
+        "color" : "blue",
+        "content" : " 更进一步地，实际工作中，我们更希望通过一个排版文件，来设置需要排版的文字的 ",
+        "size" : 16,
+        "type" : "txt"
     },
   {
       "headimg" :"zjj_photo",
       "nickname" : "天空吸引我",
       "describe" : "世界上最稳定的关系，是没有关系 ",
       "img" : ["football","zjj_photo","zjj_photo","zjj_photo","zjj_photo","football","football","zjj_photo"],
+      "color" : "red",
+      "content" : " 内容、颜色、字体 ",
+      "size" : 22,
+      "type" : "txt"
   },
   {
       "headimg" :"football",
       "nickname" : "Wilamowitz",
       "describe" : "除了国旗侧过来应该让我支持的比利时队以外，我突然发现我仁的球员天选之子－托利索是法国人啊！我应该支持法国队的！那我就支持法国和比利时获胜吧😂 ",
       "img" : ["football","zjj_photo"],
+      "color" : "red",
+      "content" : " 内容、颜色、字体 ",
+      "size" : 22,
+      "type" : "txt"
   },
   {
       "headimg" :"football",
       "nickname" : "Wilamowitz",
       "describe" : "除了国旗侧过来应该让我支持的比利时队以外，我突然发现我仁的球员天选之子－托利索是法国人啊！我应该支持法国队的！那我就支持法国和比利时获胜吧😂 ",
       "img" : ["football","zjj_photo"],
+      "color" : "black",
+      "content" : " 大小等信息。\n",
+      "size" : 16,
+      "type" : "txt"
   },
   {
       "headimg" :"zjj_photo",

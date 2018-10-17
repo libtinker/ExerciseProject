@@ -11,6 +11,10 @@
 		5668954F216DE6290005EF10 /* AutoHeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5668954E216DE6290005EF10 /* AutoHeightCell.m */; };
 		56689551216DE7270005EF10 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 56689550216DE7270005EF10 /* content.json */; };
 		5668957421704B810005EF10 /* AutoCellCoreTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5668957321704B810005EF10 /* AutoCellCoreTextView.m */; };
+		5668957721743D120005EF10 /* CTFrameParserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5668957621743D120005EF10 /* CTFrameParserConfig.m */; };
+		5668957A21743EE40005EF10 /* CoreTextData.m in Sources */ = {isa = PBXBuildFile; fileRef = 5668957921743EE40005EF10 /* CoreTextData.m */; };
+		5668957D217463690005EF10 /* CTFrameParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5668957C217463690005EF10 /* CTFrameParser.m */; };
+		5668958021758EB10005EF10 /* ContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5668957F21758EB10005EF10 /* ContentModel.m */; };
 		56A292DB21549ED90078B1C0 /* FJFNavigationControllerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A292D621549ED90078B1C0 /* FJFNavigationControllerManager.m */; };
 		56A292DC21549ED90078B1C0 /* FJFViewControllerConfigureManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A292D821549ED90078B1C0 /* FJFViewControllerConfigureManager.m */; };
 		56A292DD21549ED90078B1C0 /* UINavigationController+HasCalledTheMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 56A292DA21549ED90078B1C0 /* UINavigationController+HasCalledTheMethod.m */; };
@@ -41,6 +45,11 @@
 		56F164292146576500BC147D /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F164282146576400BC147D /* TestView.m */; };
 		56F164302147BD3800BC147D /* LifeCycleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F1642F2147BD3800BC147D /* LifeCycleVC.m */; };
 		56F164332147BDAC00BC147D /* LifeCycleVC+ZJJCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F164322147BDAC00BC147D /* LifeCycleVC+ZJJCategory.m */; };
+		56F8793D2175EA2500FF89FA /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F8793A2175EA2500FF89FA /* YYFPSLabel.m */; };
+		56F8793E2175EA2500FF89FA /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F8793C2175EA2500FF89FA /* YYWeakProxy.m */; };
+		56F879422177124200FF89FA /* Quartz2DVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F879412177124200FF89FA /* Quartz2DVC.m */; };
+		56F879452177133300FF89FA /* LeoDemoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F879442177133300FF89FA /* LeoDemoView.m */; };
+		56F8794821772CF800FF89FA /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 56F8794721772CF800FF89FA /* CircleView.m */; };
 		681BFA20214BFEFF00E80BF0 /* CoreTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 681BFA1F214BFEFF00E80BF0 /* CoreTextVC.m */; };
 		681BFA23214BFFE500E80BF0 /* CTDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 681BFA22214BFFE500E80BF0 /* CTDisplayView.m */; };
 		D4E992B7A5601792F63B0CF5 /* libPods-ExerciseProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAFDE7A7518D519391013308 /* libPods-ExerciseProject.a */; };
@@ -54,6 +63,14 @@
 		56689550216DE7270005EF10 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 		5668957221704B810005EF10 /* AutoCellCoreTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoCellCoreTextView.h; sourceTree = "<group>"; };
 		5668957321704B810005EF10 /* AutoCellCoreTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoCellCoreTextView.m; sourceTree = "<group>"; };
+		5668957521743D120005EF10 /* CTFrameParserConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFrameParserConfig.h; sourceTree = "<group>"; };
+		5668957621743D120005EF10 /* CTFrameParserConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTFrameParserConfig.m; sourceTree = "<group>"; };
+		5668957821743EE40005EF10 /* CoreTextData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreTextData.h; sourceTree = "<group>"; };
+		5668957921743EE40005EF10 /* CoreTextData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreTextData.m; sourceTree = "<group>"; };
+		5668957B217463690005EF10 /* CTFrameParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTFrameParser.h; sourceTree = "<group>"; };
+		5668957C217463690005EF10 /* CTFrameParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTFrameParser.m; sourceTree = "<group>"; };
+		5668957E21758EB10005EF10 /* ContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentModel.h; sourceTree = "<group>"; };
+		5668957F21758EB10005EF10 /* ContentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentModel.m; sourceTree = "<group>"; };
 		56A292D521549ED90078B1C0 /* FJFNavigationControllerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJFNavigationControllerManager.h; sourceTree = "<group>"; };
 		56A292D621549ED90078B1C0 /* FJFNavigationControllerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FJFNavigationControllerManager.m; sourceTree = "<group>"; };
 		56A292D721549ED90078B1C0 /* FJFViewControllerConfigureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FJFViewControllerConfigureManager.h; sourceTree = "<group>"; };
@@ -114,6 +131,16 @@
 		56F1642F2147BD3800BC147D /* LifeCycleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LifeCycleVC.m; sourceTree = "<group>"; };
 		56F164312147BDAC00BC147D /* LifeCycleVC+ZJJCategory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LifeCycleVC+ZJJCategory.h"; sourceTree = "<group>"; };
 		56F164322147BDAC00BC147D /* LifeCycleVC+ZJJCategory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LifeCycleVC+ZJJCategory.m"; sourceTree = "<group>"; };
+		56F879392175EA2500FF89FA /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		56F8793A2175EA2500FF89FA /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		56F8793B2175EA2500FF89FA /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		56F8793C2175EA2500FF89FA /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
+		56F879402177124200FF89FA /* Quartz2DVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quartz2DVC.h; sourceTree = "<group>"; };
+		56F879412177124200FF89FA /* Quartz2DVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Quartz2DVC.m; sourceTree = "<group>"; };
+		56F879432177133300FF89FA /* LeoDemoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeoDemoView.h; sourceTree = "<group>"; };
+		56F879442177133300FF89FA /* LeoDemoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeoDemoView.m; sourceTree = "<group>"; };
+		56F8794621772CF800FF89FA /* CircleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
+		56F8794721772CF800FF89FA /* CircleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		574B1EC8701B7530FCF0A6F7 /* Pods-ExerciseProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExerciseProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExerciseProject/Pods-ExerciseProject.debug.xcconfig"; sourceTree = "<group>"; };
 		681BFA1E214BFEFF00E80BF0 /* CoreTextVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreTextVC.h; sourceTree = "<group>"; };
 		681BFA1F214BFEFF00E80BF0 /* CoreTextVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreTextVC.m; sourceTree = "<group>"; };
@@ -153,6 +180,14 @@
 				5668954E216DE6290005EF10 /* AutoHeightCell.m */,
 				5668957221704B810005EF10 /* AutoCellCoreTextView.h */,
 				5668957321704B810005EF10 /* AutoCellCoreTextView.m */,
+				5668957521743D120005EF10 /* CTFrameParserConfig.h */,
+				5668957621743D120005EF10 /* CTFrameParserConfig.m */,
+				5668957821743EE40005EF10 /* CoreTextData.h */,
+				5668957921743EE40005EF10 /* CoreTextData.m */,
+				5668957B217463690005EF10 /* CTFrameParser.h */,
+				5668957C217463690005EF10 /* CTFrameParser.m */,
+				5668957E21758EB10005EF10 /* ContentModel.h */,
+				5668957F21758EB10005EF10 /* ContentModel.m */,
 			);
 			path = AutoCellHeight;
 			sourceTree = "<group>";
@@ -209,6 +244,7 @@
 		56CEAAE12130F86A00F60554 /* ExerciseProject */ = {
 			isa = PBXGroup;
 			children = (
+				56F879382175EA2500FF89FA /* YYFPSLabel */,
 				56A292D421549ED90078B1C0 /* FJFNavigationBarManager */,
 				56CEAB252131291A00F60554 /* BaseViewController */,
 				56CEAB0B21310E8800F60554 /* BaseTabBarController */,
@@ -270,6 +306,7 @@
 		56CEAB0F2131127500F60554 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				56F8793F2177121200FF89FA /* Quartz2D */,
 				56689549216DE31C0005EF10 /* AutoCellHeight */,
 				681BFA1D214BFECB00E80BF0 /* CoreText */,
 				56A293042160A2110078B1C0 /* Socket */,
@@ -459,6 +496,30 @@
 			path = LifeCycleVC;
 			sourceTree = "<group>";
 		};
+		56F879382175EA2500FF89FA /* YYFPSLabel */ = {
+			isa = PBXGroup;
+			children = (
+				56F879392175EA2500FF89FA /* YYFPSLabel.h */,
+				56F8793A2175EA2500FF89FA /* YYFPSLabel.m */,
+				56F8793B2175EA2500FF89FA /* YYWeakProxy.h */,
+				56F8793C2175EA2500FF89FA /* YYWeakProxy.m */,
+			);
+			path = YYFPSLabel;
+			sourceTree = "<group>";
+		};
+		56F8793F2177121200FF89FA /* Quartz2D */ = {
+			isa = PBXGroup;
+			children = (
+				56F879402177124200FF89FA /* Quartz2DVC.h */,
+				56F879412177124200FF89FA /* Quartz2DVC.m */,
+				56F879432177133300FF89FA /* LeoDemoView.h */,
+				56F879442177133300FF89FA /* LeoDemoView.m */,
+				56F8794621772CF800FF89FA /* CircleView.h */,
+				56F8794721772CF800FF89FA /* CircleView.m */,
+			);
+			path = Quartz2D;
+			sourceTree = "<group>";
+		};
 		65B7C6F6DD3A25190D84E46C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,10 +635,14 @@
 				56F164082139193600BC147D /* SetVC.m in Sources */,
 				56F1642621424B0E00BC147D /* RuntimeVC.m in Sources */,
 				56F16417213FDB3800BC147D /* CopyVC.m in Sources */,
+				56F8794821772CF800FF89FA /* CircleView.m in Sources */,
+				56F8793E2175EA2500FF89FA /* YYWeakProxy.m in Sources */,
 				56F163F12137BF4900BC147D /* BlockVC.m in Sources */,
+				5668957A21743EE40005EF10 /* CoreTextData.m in Sources */,
 				56A292DC21549ED90078B1C0 /* FJFViewControllerConfigureManager.m in Sources */,
 				56F164332147BDAC00BC147D /* LifeCycleVC+ZJJCategory.m in Sources */,
 				56CEAB0E21310ED600F60554 /* BaseTabBarController.m in Sources */,
+				56F8793D2175EA2500FF89FA /* YYFPSLabel.m in Sources */,
 				56CEAB282131294100F60554 /* BaseViewController.m in Sources */,
 				56F164292146576500BC147D /* TestView.m in Sources */,
 				56CEAAF22130F86B00F60554 /* main.m in Sources */,
@@ -590,7 +655,9 @@
 				681BFA20214BFEFF00E80BF0 /* CoreTextVC.m in Sources */,
 				56F163E12131335700BC147D /* HomeViewModel.m in Sources */,
 				56CEAAE42130F86A00F60554 /* AppDelegate.m in Sources */,
+				5668958021758EB10005EF10 /* ContentModel.m in Sources */,
 				56CEAB1C2131130C00F60554 /* MineVC.m in Sources */,
+				5668957D217463690005EF10 /* CTFrameParser.m in Sources */,
 				56CEAB242131250900F60554 /* BaseNavigationController.m in Sources */,
 				681BFA23214BFFE500E80BF0 /* CTDisplayView.m in Sources */,
 				56CEAB19213112FA00F60554 /* HomeVC.m in Sources */,
@@ -601,8 +668,11 @@
 				56F1640C213D2DC600BC147D /* RunLoopVC.m in Sources */,
 				56A2930A2160B08B0078B1C0 /* ServerSocketVC.m in Sources */,
 				56CEAB032130FCAC00F60554 /* StartPageVC.m in Sources */,
+				56F879422177124200FF89FA /* Quartz2DVC.m in Sources */,
 				56F16413213FAFDB00BC147D /* CustomerBtn.m in Sources */,
+				56F879452177133300FF89FA /* LeoDemoView.m in Sources */,
 				56F16410213FADFE00BC147D /* CustomerBtnVC.m in Sources */,
+				5668957721743D120005EF10 /* CTFrameParserConfig.m in Sources */,
 				56A292DB21549ED90078B1C0 /* FJFNavigationControllerManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

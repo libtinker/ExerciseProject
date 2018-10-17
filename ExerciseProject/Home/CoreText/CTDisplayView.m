@@ -24,7 +24,7 @@
     }
     return self;
 }
-/*
+
 #pragma mark 图片代理
 void RunDelegateDeallocCallback(void *refCon){
     NSLog(@"RunDelegate dealloc");
@@ -243,6 +243,6 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
     CFRelease(pathRef);
     CFRelease(framesetterRef);
 }
-*/
+
 
 @end

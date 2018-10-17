@@ -9,6 +9,8 @@
 #import "AutoHeightCell.h"
 #import "AutoCellCoreTextView.h"
 #import <Masonry.h>
+#import "CTFrameParser.h"
+#import "CTFrameParserConfig.h"
 
 @interface AutoHeightCell ()
 
@@ -76,8 +78,46 @@
 - (void)setTitle:(NSString *)title contentText:(NSString *)contentText headimg:(NSString *)headimg imageArray:(NSArray *)imageArray{
     _nicknameLable.text = title;
     _headerImageView.image = [UIImage imageNamed:headimg];
-    [_coreTextView setDiscribText:contentText imageArray:imageArray];
+
+    CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+    config.width = 300;
+    config.textColor = [UIColor blackColor];
+
+    NSDictionary *attr = [CTFrameParser attributesWithConfig:config];
+    NSMutableAttributedString *attributedString =
+    [[NSMutableAttributedString alloc] initWithString:contentText
+                                           attributes:attr];
+
+    [attributedString addAttribute:(id)kCTForegroundColorAttributeName value:(id)[UIColor greenColor].CGColor range:NSMakeRange(0, 7)];
+    // 设置行距等样式
+    CoreTextData *data = [CTFrameParser parseAttributedContent:attributedString
+                                                        config:config];
+    _coreTextView.data = data;
 }
+/*
+ - (void)setModel:(ContentModel *)model {
+ _model = model;
+ _nicknameLable.text = model.nickname;
+ _headerImageView.image = [UIImage imageNamed:model.headimg];
+
+
+ CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+ NSDictionary *attr = [CTFrameParser attributesWithConfig:config];
+ NSMutableAttributedString *attributedString =
+ [[NSMutableAttributedString alloc] initWithString:model.describe
+ attributes:attr];
+ [attributedString addAttribute:(id)NSForegroundColorAttributeName
+ value:(id)[UIColor redColor].CGColor
+ range:NSMakeRange(0, 7)];
+
+
+
+ CoreTextData *data = [CTFrameParser parseAttributedContent:attributedString config:config];
+
+
+ _coreTextView.data = data;
+ }
+ */
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

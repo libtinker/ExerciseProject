@@ -8,18 +8,30 @@
 
 #import "AutoCellHeightVC.h"
 #import "AutoHeightCell.h"
+#import "CTFrameParserConfig.h"
+#import "CTFrameParser.h"
+#import "CoreTextData.h"
+#import "YYFPSLabel.h"
 
 @interface AutoCellHeightVC ()<UITableViewDelegate,UITableViewDataSource>
 {
-    NSArray *_dataArray;
+    NSMutableArray *_dataArray;
 }
 @property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic, strong) YYFPSLabel *fpsLabel;
+
 @end
 
 static NSString *CellName = @"AutoHeightCell";
 
 @implementation AutoCellHeightVC
 
+- (instancetype)init {
+    if ([super init]) {
+        _dataArray = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 - (void)viewDidLoad {
 
     [super viewDidLoad];
@@ -27,12 +39,24 @@ static NSString *CellName = @"AutoHeightCell";
 
     [self.view addSubview:self.tableView];
     [self readData];
+     [self testFPSLabel];
 }
+- (void)testFPSLabel {
+    _fpsLabel = [YYFPSLabel new];
+    _fpsLabel.frame = CGRectMake(200, 200, 50, 30);
+    [_fpsLabel sizeToFit];
+    [self.view addSubview:_fpsLabel];
 
+    // 如果直接用 self 或者 weakSelf，都不能解决循环引用问题
+
+    // 移除也不能使 label里的 timer invalidate
+    //        [_fpsLabel removeFromSuperview];
+}
 - (void)readData {
 
     NSString *path = [[NSBundle mainBundle] pathForResource:@"content" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path];
+
     _dataArray = [NSJSONSerialization JSONObjectWithData:data
                                                      options:NSJSONReadingAllowFragments
                                                        error:nil];
@@ -62,13 +86,35 @@ static NSString *CellName = @"AutoHeightCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     AutoHeightCell *cell = [tableView dequeueReusableCellWithIdentifier:CellName forIndexPath:indexPath];
-    NSDictionary *dict = _dataArray[indexPath.row];
-    [cell setTitle:dict[@"nickname"] contentText:dict[@"describe"] headimg:dict[@"headimg"] imageArray:dict[@"img"]];
+
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSDictionary *dict = _dataArray[indexPath.row];
+    AutoHeightCell *zcell = (AutoHeightCell *)cell;
+    [zcell setTitle:dict[@"nickname"] contentText:dict[@"describe"] headimg:dict[@"headimg"] imageArray:dict[@"img"]];
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 400;
+
+
+    NSDictionary *dict = _dataArray[indexPath.row];
+    CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+    config.width = 300;
+    config.textColor = [UIColor blackColor];
+
+    NSDictionary *attr = [CTFrameParser attributesWithConfig:config];
+    NSMutableAttributedString *attributedString =
+    [[NSMutableAttributedString alloc] initWithString:dict[@"describe"]
+                                           attributes:attr];
+    [attributedString addAttribute:NSForegroundColorAttributeName
+                             value:[UIColor redColor]
+                             range:NSMakeRange(0, 7)];
+    CoreTextData *data = [CTFrameParser parseAttributedContent:attributedString
+                                                        config:config];
+
+    return data.height+45;
 }
 /*
  "headimg" :"football",

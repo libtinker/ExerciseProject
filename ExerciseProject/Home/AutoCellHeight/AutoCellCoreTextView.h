@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import <Foundation/Foundation.h>
+#import "CoreTextData.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AutoCellCoreTextView : UIView
 
-- (void)setDiscribText:(NSString *)text imageArray:(NSArray *)imageArray;
+@property (strong, nonatomic) CoreTextData * data;
+
 @end
 
 NS_ASSUME_NONNULL_END
