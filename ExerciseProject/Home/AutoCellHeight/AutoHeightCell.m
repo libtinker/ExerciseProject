@@ -70,14 +70,56 @@
         make.left.equalTo(self.nicknameLable);
         make.right.equalTo(self.contentView).offset(-20);
         make.bottom.equalTo(self.contentView.mas_bottom).offset(-10);
-        
     }];
     self.coreTextView = coreTextView;
 }
 
++ (UIImage *) image: (UIImage *) image fitInSize: (CGSize) viewsize
+{
+    // calculate the fitted size
+    CGSize size = [self fitSize:image.size inSize:viewsize];
+
+    UIGraphicsBeginImageContext(viewsize);
+
+    float dwidth = (viewsize.width - size.width) / 2.0f;
+    float dheight = (viewsize.height - size.height) / 2.0f;
+
+    CGRect rect = CGRectMake(dwidth, dheight, size.width, size.height);
+    [image drawInRect:rect];
+
+    UIImage *newimg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return newimg;
+}
++ (CGSize) fitSize: (CGSize)thisSize inSize: (CGSize) aSize
+{
+    CGFloat scale;
+    CGSize newsize = thisSize;
+
+    if (newsize.height && (newsize.height > aSize.height))
+    {
+        scale = aSize.height / newsize.height;
+        newsize.width *= scale;
+        newsize.height *= scale;
+    }
+
+    if (newsize.width && (newsize.width >= aSize.width))
+    {
+        scale = aSize.width / newsize.width;
+        newsize.width *= scale;
+        newsize.height *= scale;
+    }
+
+    return newsize;
+}
+
+
 - (void)setTitle:(NSString *)title contentText:(NSString *)contentText headimg:(NSString *)headimg imageArray:(NSArray *)imageArray{
     _nicknameLable.text = title;
-    _headerImageView.image = [UIImage imageNamed:headimg];
+    _headerImageView.image = [AutoHeightCell image:[UIImage imageNamed:headimg] fitInSize:CGSizeMake(45, 45)] ;
+
+
 
     CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
     config.width = 300;
@@ -88,11 +130,12 @@
     [[NSMutableAttributedString alloc] initWithString:contentText
                                            attributes:attr];
 
-    [attributedString addAttribute:(id)kCTForegroundColorAttributeName value:(id)[UIColor greenColor].CGColor range:NSMakeRange(0, 7)];
     // 设置行距等样式
     CoreTextData *data = [CTFrameParser parseAttributedContent:attributedString
                                                         config:config];
     _coreTextView.data = data;
+    [_coreTextView setNeedsLayout];
+    
 }
 /*
  - (void)setModel:(ContentModel *)model {

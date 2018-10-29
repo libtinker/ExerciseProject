@@ -79,10 +79,16 @@ CGFloat RunDelegateGetWidthCallback(void *refCon){
 - (void)drawRect:(CGRect)rect {
 
     [super drawRect:rect];
-    NSString* title = @"在现实生活中，我们要不断内外兼修，几十载的人生旅途，看过这边风景，必然错过那边彩虹，有所得，必然有所失。有时，我们只有彻底做到拿得起，放得下，才能拥有一份成熟，才会活得更加充实、坦然、轻松和自由。";
+
 
     //步骤1：获取上下文
     CGContextRef contextRef = UIGraphicsGetCurrentContext();
+
+
+     NSString* title = @"在现实生活中，我们要不断内外兼修，几十载的人生旅途，看过这边风景，必然错过那边彩虹，有所得，必然有所失。有时，我们只有彻底做到拿得起，放得下，才能拥有一份成熟，才会活得更加充实、坦然、轻松和自由。";
+
+
+
     // [a,b,c,d,tx,ty]
     NSLog(@"转换前的坐标：%@",NSStringFromCGAffineTransform(CGContextGetCTM(contextRef)));
 

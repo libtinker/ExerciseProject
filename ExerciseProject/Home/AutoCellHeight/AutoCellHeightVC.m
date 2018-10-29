@@ -46,11 +46,6 @@ static NSString *CellName = @"AutoHeightCell";
     _fpsLabel.frame = CGRectMake(200, 200, 50, 30);
     [_fpsLabel sizeToFit];
     [self.view addSubview:_fpsLabel];
-
-    // 如果直接用 self 或者 weakSelf，都不能解决循环引用问题
-
-    // 移除也不能使 label里的 timer invalidate
-    //        [_fpsLabel removeFromSuperview];
 }
 - (void)readData {
 
@@ -70,10 +65,7 @@ static NSString *CellName = @"AutoHeightCell";
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.backgroundColor = [UIColor clearColor];
-        [_tableView registerClass:[AutoHeightCell class] forCellReuseIdentifier:CellName];
-        _tableView.estimatedRowHeight = 55.5;//估算高度
-        _tableView.rowHeight = UITableViewAutomaticDimension;
+        _tableView.backgroundColor = [UIColor whiteColor];
     }
     return _tableView;
 }
@@ -85,17 +77,24 @@ static NSString *CellName = @"AutoHeightCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    AutoHeightCell *cell = [tableView dequeueReusableCellWithIdentifier:CellName forIndexPath:indexPath];
 
+    AutoHeightCell *cell = [tableView dequeueReusableCellWithIdentifier:CellName];
+
+
+
+
+
+    if (cell == nil) {
+        cell = [[AutoHeightCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellName];
+    }
+
+
+    NSDictionary *dict = _dataArray[indexPath.row];
+   [cell setTitle:dict[@"nickname"] contentText:dict[@"describe"] headimg:dict[@"headimg"] imageArray:dict[@"img"]];
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    NSDictionary *dict = _dataArray[indexPath.row];
-    AutoHeightCell *zcell = (AutoHeightCell *)cell;
-    [zcell setTitle:dict[@"nickname"] contentText:dict[@"describe"] headimg:dict[@"headimg"] imageArray:dict[@"img"]];
-}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 
@@ -108,9 +107,7 @@ static NSString *CellName = @"AutoHeightCell";
     NSMutableAttributedString *attributedString =
     [[NSMutableAttributedString alloc] initWithString:dict[@"describe"]
                                            attributes:attr];
-    [attributedString addAttribute:NSForegroundColorAttributeName
-                             value:[UIColor redColor]
-                             range:NSMakeRange(0, 7)];
+
     CoreTextData *data = [CTFrameParser parseAttributedContent:attributedString
                                                         config:config];
 

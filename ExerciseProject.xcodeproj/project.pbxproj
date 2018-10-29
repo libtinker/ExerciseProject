@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		561CED6421772E7F00CBAB8D /* CircleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 561CED6321772E7F00CBAB8D /* CircleItem.m */; };
 		5668954C216DE3880005EF10 /* AutoCellHeightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5668954B216DE3880005EF10 /* AutoCellHeightVC.m */; };
 		5668954F216DE6290005EF10 /* AutoHeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5668954E216DE6290005EF10 /* AutoHeightCell.m */; };
 		56689551216DE7270005EF10 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 56689550216DE7270005EF10 /* content.json */; };
@@ -56,6 +57,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		561CED6221772E7F00CBAB8D /* CircleItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleItem.h; sourceTree = "<group>"; };
+		561CED6321772E7F00CBAB8D /* CircleItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleItem.m; sourceTree = "<group>"; };
 		5668954A216DE3880005EF10 /* AutoCellHeightVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoCellHeightVC.h; sourceTree = "<group>"; };
 		5668954B216DE3880005EF10 /* AutoCellHeightVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AutoCellHeightVC.m; sourceTree = "<group>"; };
 		5668954D216DE6290005EF10 /* AutoHeightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AutoHeightCell.h; sourceTree = "<group>"; };
@@ -516,6 +519,8 @@
 				56F879442177133300FF89FA /* LeoDemoView.m */,
 				56F8794621772CF800FF89FA /* CircleView.h */,
 				56F8794721772CF800FF89FA /* CircleView.m */,
+				561CED6221772E7F00CBAB8D /* CircleItem.h */,
+				561CED6321772E7F00CBAB8D /* CircleItem.m */,
 			);
 			path = Quartz2D;
 			sourceTree = "<group>";
@@ -647,6 +652,7 @@
 				56F164292146576500BC147D /* TestView.m in Sources */,
 				56CEAAF22130F86B00F60554 /* main.m in Sources */,
 				56F1641A213FDBCA00BC147D /* CopyModel.m in Sources */,
+				561CED6421772E7F00CBAB8D /* CircleItem.m in Sources */,
 				5668954F216DE6290005EF10 /* AutoHeightCell.m in Sources */,
 				56F164212140FD7600BC147D /* DelegateTestVC.m in Sources */,
 				56A292DD21549ED90078B1C0 /* UINavigationController+HasCalledTheMethod.m in Sources */,

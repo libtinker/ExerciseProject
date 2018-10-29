@@ -23,6 +23,11 @@
     return self;
 }
 
+- (void)setData:(CoreTextData *)data {
+    _data = data;
+    [self setNeedsLayout];
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {

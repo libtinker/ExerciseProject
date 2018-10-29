@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-
-
 @interface CircleView : UIView
 
 
+/**
+ 环形模型数组（CircleItem）
+ */
+@property (nonatomic,strong) NSArray *circleItemArray;
 @end
 
 

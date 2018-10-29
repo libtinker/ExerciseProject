@@ -84,14 +84,23 @@ static NSString *CellName = @"RunLoopCell";
 //        [cell clear];
 //    }
 
-    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:dataArray[indexPath.row]] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
 
-        CGImageRef partImageRef = CGImageCreateWithImageInRect(image.CGImage, CGRectMake(0, 0,300, 200));
-        UIImage * partImage = [[UIImage alloc] initWithCGImage:partImageRef];
+    [cell.contentImageView sd_setImageWithURL:[NSURL URLWithString:dataArray[indexPath.row]]];
 
-
-        cell.contentImageView.image = partImage;
-    }];
+//    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:dataArray[indexPath.row]] options:SDWebImageDownloaderUseNSURLCache progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+//        dispatch_queue_t queue = dispatch_queue_create(NULL, DISPATCH_QUEUE_SERIAL);
+//        dispatch_async(queue, ^{
+//            CFDataRef dataRef = (__bridge CFDataRef)data;
+//            CGImageSourceRef source = CGImageSourceCreateWithData(dataRef, nil);
+//            CGImageRef cgImage = CGImageSourceCreateImageAtIndex(source, 0, nil);
+//            UIImage *partImage = [UIImage imageWithCGImage:cgImage];
+//
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//
+//                cell.contentImageView.image = partImage;
+//            });
+//        });
+//    }];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
